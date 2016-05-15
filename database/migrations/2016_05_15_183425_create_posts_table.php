@@ -14,6 +14,11 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('title');
+            $table->text('content');
+            $table->foreign('category_id')
+                ->references('id')->on('categories')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -28,3 +33,4 @@ class CreatePostsTable extends Migration
         Schema::drop('posts');
     }
 }
+
