@@ -16,8 +16,9 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('content');
-            $table->integer('category_id')->unsigned();
-            $table->foreign('category_id')->references('id')->on('categories');
+//            $table->dropForeign('posts_category_id_foreign');
+//            $table->integer('category_id')->unsigned();
+////            $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
         });
     }
@@ -30,6 +31,7 @@ class CreatePostsTable extends Migration
     public function down()
     {
         Schema::drop('posts');
+
     }
 }
 
